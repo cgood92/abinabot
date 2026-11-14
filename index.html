@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abinabot</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Main Scenic Viewport: Robot Only, No Text on Screen -->
+    <main class="stage-viewport" id="stage-viewport">
+        <!-- Cartoon Clouds in Sky -->
+        <div class="clouds-container">
+            <div class="cloud cloud-1"></div>
+            <div class="cloud cloud-2"></div>
+            <div class="cloud cloud-3"></div>
+        </div>
+
+        <!-- Grassy Hill Horizon -->
+        <div class="meadow-ground">
+            <div class="grass-tufts"></div>
+        </div>
+
+        <!-- Articulated Character Stage -->
+        <div class="robot-stage-wrap" id="robot-container" title="Click anywhere or press Space/Right Arrow to progress">
+            <!-- Procedural 2D Skeletal Robot Rig Rendered Here -->
+        </div>
+
+        <!-- Visual Lyric & Picture Card Stage (Only visible during lyric teaching / sing-along) -->
+        <div id="visual-card-stage" class="visual-card-stage" title="Click or press Space/Right Arrow to advance"></div>
+
+        <!-- Discreet Voice Ear Active Indicator (only visible when listening) -->
+        <div id="voice-live-dot" class="voice-live-dot" title="Voice Ear is listening for keywords">
+            <span class="live-pulse-dot"></span>
+            <span id="voice-status-text">Listening...</span>
+        </div>
+
+        <!-- Menu / Settings Trigger Button (The ONLY UI control visible on screen) -->
+        <button id="menu-trigger-btn" class="menu-trigger-btn" aria-label="Open Settings Menu" title="Settings & Songs (Press S or Click)">
+            ⚙️
+        </button>
+    </main>
+
+    <!-- Slide-over Settings & Script Drawer -->
+    <div id="settings-drawer" class="drawer-overlay">
+        <div class="drawer-panel">
+            <div class="drawer-header">
+                <h2 class="drawer-title">⚙️ Abinabot Settings</h2>
+                <button id="drawer-close-btn" class="drawer-close-btn" aria-label="Close Settings">&times;</button>
+            </div>
+
+            <div class="drawer-body">
+                <!-- Song Selection -->
+                <div class="drawer-section">
+                    <label class="section-label" for="drawer-script-select">Selected Song / Script</label>
+                    <select id="drawer-script-select" class="select-control"></select>
+                </div>
+
+                <!-- Teacher's Prompter Peek & Custom Audio Recording -->
+                <div class="drawer-section">
+                    <span class="section-label">Script Prompter & Custom Audio</span>
+                    <div class="prompter-peek">
+                        <div id="peek-step-num" class="prompter-peek-step">Step 1 of 10</div>
+                        <div id="peek-current-line" class="prompter-peek-text">Loading script...</div>
+                        <div id="peek-upcoming-line" class="prompter-peek-upcoming">Upcoming: ...</div>
+                        
+                        <!-- Voice Recording / Upload Controls -->
+                        <div class="recording-controls-wrap">
+                            <button id="btn-record-clip" class="btn-record">🎙️ Record Line</button>
+                            <label class="btn-record" style="cursor: pointer; margin: 0;">
+                                📁 Upload Audio
+                                <input type="file" id="file-upload-clip" accept="audio/*" style="display: none;">
+                            </label>
+                            <button id="btn-preview-clip" class="btn-record" style="display: none; border-color: #38bdf8; color: #7dd3fc;">▶ Play Clip</button>
+                            <button id="btn-delete-clip" class="btn-record" style="display: none; border-color: #64748b; color: #cbd5e1;">✕ Clear</button>
+                        </div>
+                        <span id="recording-status" class="btn-record-status" style="margin-top: 4px; display: inline-block;">Using System Voice</span>
+                    </div>
+                </div>
+
+                <!-- Real-Time DSP Audio "Robot-izer" -->
+                <div class="drawer-section">
+                    <span class="section-label">🤖 Audio "Robot-izer" Effects</span>
+                    <div class="toggle-row">
+                        <div>
+                            <div class="toggle-label">Robot-ize Recorded Voice</div>
+                            <div class="toggle-subtext">Transforms human speech into a robot using Web Audio DSP</div>
+                        </div>
+                        <button id="btn-toggle-robotize" class="btn-toggle-switch active">ON</button>
+                    </div>
+
+                    <label class="section-label" for="robot-preset-select" style="margin-top: 6px;">Robot Sound Style</label>
+                    <select id="robot-preset-select" class="select-control">
+                        <option value="friendly" selected>Cute Friendly Robot (Disney / Pixar)</option>
+                        <option value="metallic">Classic Sci-Fi (Metallic Ring Modulator)</option>
+                        <option value="intercom">Intercom / Speaker Grill Robot</option>
+                        <option value="none">Natural (No Effect / Pure Human Voice)</option>
+                    </select>
+                </div>
+
+                <!-- Natural System Voice (Fallback when no recording exists) -->
+                <div class="drawer-section">
+                    <label class="section-label" for="drawer-natural-voice-select">🗣️ Clear System Voice (Fallback)</label>
+                    <select id="drawer-natural-voice-select" class="select-control">
+                        <option value="">Loading system voices...</option>
+                    </select>
+
+                    <div class="slider-row">
+                        <span>Pitch:</span>
+                        <input type="range" id="voice-pitch-slider" class="slider-input" min="0.7" max="1.4" step="0.05" value="1.05">
+                        <span id="pitch-val">1.05</span>
+                    </div>
+
+                    <div class="slider-row">
+                        <span>Speed:</span>
+                        <input type="range" id="voice-speed-slider" class="slider-input" min="0.7" max="1.3" step="0.05" value="1.0">
+                        <span id="speed-val">1.0</span>
+                    </div>
+
+                    <button id="btn-test-voice" class="btn-action btn-secondary" style="margin-top: 4px;">
+                        🔊 Test Clear Voice
+                    </button>
+                </div>
+
+                <!-- Audio & Voice Recognition Controls -->
+                <div class="drawer-section">
+                    <span class="section-label">Interaction Modes</span>
+
+                    <!-- Voice Ear (Speech Recognition) -->
+                    <div class="toggle-row">
+                        <div>
+                            <div class="toggle-label">👂 Voice Ear (Hands-Free)</div>
+                            <div class="toggle-subtext">Advances automatically on spoken keywords</div>
+                        </div>
+                        <button id="drawer-btn-voice" class="btn-toggle-switch">OFF</button>
+                    </div>
+
+                    <!-- Mute / Ventriloquist Mode -->
+                    <div class="toggle-row">
+                        <div>
+                            <div class="toggle-label">🔊 Abinabot Voice Audio</div>
+                            <div class="toggle-subtext">Turn OFF if you want to speak for Abinabot live yourself</div>
+                        </div>
+                        <button id="drawer-btn-tts" class="btn-toggle-switch active">ON</button>
+                    </div>
+                </div>
+
+                <!-- Manual Robot Gesture Test -->
+                <div class="drawer-section">
+                    <span class="section-label">Test Articulated Movements</span>
+                    <div class="gesture-grid">
+                        <button class="btn-gesture" data-gesture="idle">🧍 Gentle Sway (Idle)</button>
+                        <button class="btn-gesture" data-gesture="singing">🎶 Side-to-Side Sway</button>
+                        <button class="btn-gesture" data-gesture="both-arms-up">🙌 Deep Squat & Leap</button>
+                        <button class="btn-gesture" data-gesture="jump">🤸 Jump & Flip</button>
+                        <button class="btn-gesture" data-gesture="conduct">🎵 Conduct & Bounce</button>
+                        <button class="btn-gesture" data-gesture="wave">👋 Wave & Step</button>
+                        <button class="btn-gesture" data-gesture="point">👉 Point to Card</button>
+                        <button class="btn-gesture" data-gesture="facepalm">🤦 Facepalm Shake</button>
+                        <button class="btn-gesture" data-gesture="listen">👂 Listen to Teacher</button>
+                    </div>
+                </div>
+
+                <!-- Controls & Navigation -->
+                <div class="drawer-section">
+                    <span class="section-label">Progression Controls</span>
+                    <select id="drawer-step-jump" class="select-control" aria-label="Jump to Step" style="margin-bottom: 6px;"></select>
+                    <div style="display: flex; gap: 8px;">
+                        <button id="drawer-btn-prev" class="btn-action btn-secondary">◀ Previous Line</button>
+                        <button id="drawer-btn-next" class="btn-action">Next Line ▶</button>
+                    </div>
+                    <button id="drawer-btn-restart" class="btn-action btn-secondary" style="margin-top: 6px;">🔄 Restart from Beginning</button>
+                </div>
+
+                <!-- Shortcuts Guide -->
+                <div class="drawer-section">
+                    <span class="section-label">Shortcuts Guide</span>
+                    <p style="font-size: 12px; color: #94a3b8; line-height: 1.5;">
+                        • <b>Space / Right Arrow / Clicker:</b> Advance to next line<br>
+                        • <b>Left Arrow / Backspace:</b> Previous line<br>
+                        • <b>R:</b> Restart song<br>
+                        • <b>F:</b> Toggle Fullscreen (hides browser chrome)<br>
+                        • <b>V:</b> Toggle Voice Ear (hands-free keyword listener)<br>
+                        • <b>M:</b> Mute / Unmute Voice<br>
+                        • <b>S or Esc:</b> Toggle this Settings Menu
+                    </p>
+                </div>
+            </div>
+
+            <div class="drawer-footer">
+                <button id="drawer-btn-fullscreen" class="btn-action btn-secondary">⛶ Fullscreen</button>
+                <button id="drawer-btn-close" class="btn-action">Done</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="audio.js"></script>
+    <script src="speech.js"></script>
+    <script src="robot-rig.js"></script>
+    <script src="visual-cards.js"></script>
+    <script src="scripts-data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
