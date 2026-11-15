@@ -88,7 +88,7 @@ const DEFAULT_SCRIPTS = [
             {
                 id: "step-12",
                 speaker: "robot",
-                text: "Then Heav'nly Father presented a beautiful plan,",
+                text: "Then Heav’nly Father presented a beautiful plan,",
                 audioFile: "audio/clip-07-v1-3.wav",
                 gesture: "point",
                 visualCard: { type: "single", id: "heaven-v1-3", badge: "Verse 1 • Line 3" }
@@ -139,7 +139,7 @@ const DEFAULT_SCRIPTS = [
             {
                 id: "step-18",
                 speaker: "teacher",
-                text: "Father said he needed someone who had enough love,",
+                text: "Father said he needed someone who had enough love",
                 gesture: "point",
                 visualCard: { type: "single", id: "heaven-v2-1", badge: "Verse 2 • Line 1" }
             },
@@ -160,7 +160,7 @@ const DEFAULT_SCRIPTS = [
             {
                 id: "step-21",
                 speaker: "teacher",
-                text: "Jesus said, 'Father, send me, and the glory be thine.'",
+                text: "Jesus said, “Father, send me, and the glory be thine.”",
                 gesture: "point",
                 visualCard: { type: "single", id: "heaven-v2-4", badge: "Verse 2 • Line 4" }
             },
@@ -216,10 +216,9 @@ const DEFAULT_SCRIPTS = [
             {
                 id: "step-28",
                 speaker: "robot",
-                text: "Christmas bells are ringing,",
+                text: "Christmas bells are ringing.",
                 audioFile: "audio/clip-12-bells-1.wav",
                 gesture: "point",
-                autoAdvanceOnAudioEnd: true,
                 visualCard: { type: "single", id: "bells-1", badge: "Christmas Bells • 1" }
             },
             {
@@ -228,7 +227,6 @@ const DEFAULT_SCRIPTS = [
                 text: "Hear what they say to you:",
                 audioFile: "audio/clip-13-bells-2.wav",
                 gesture: "point",
-                autoAdvanceOnAudioEnd: true,
                 visualCard: { type: "single", id: "bells-2", badge: "Christmas Bells • 2" }
             },
             {
@@ -237,13 +235,12 @@ const DEFAULT_SCRIPTS = [
                 text: "Jesus is born in Bethlehem,",
                 audioFile: "audio/clip-14-bells-3.wav",
                 gesture: "point",
-                autoAdvanceOnAudioEnd: true,
                 visualCard: { type: "single", id: "bells-3", badge: "Christmas Bells • 3" }
             },
             {
                 id: "step-31",
                 speaker: "robot",
-                text: "In Bethlehem.",
+                text: "in Bethlehem.",
                 audioFile: "audio/clip-15-bells-4.wav",
                 gesture: "point",
                 visualCard: { type: "single", id: "bells-4", badge: "Christmas Bells • 4" }

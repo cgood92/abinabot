@@ -123,17 +123,11 @@ class AbinabotApp {
     }
 
     bindEvents() {
-        // Tap/Click anywhere on the robot stage or visual card advances to next line
-        this.elements.robotContainer.addEventListener('click', (e) => {
-            if (e.target.closest('#menu-trigger-btn')) return;
+        // Tap/Click anywhere on the stage viewport advances to next line
+        this.elements.viewport.addEventListener('click', (e) => {
+            if (e.target.closest('#menu-trigger-btn') || this.isDrawerOpen) return;
             this.nextStep();
         });
-
-        if (this.elements.visualCardStage) {
-            this.elements.visualCardStage.addEventListener('click', () => {
-                this.nextStep();
-            });
-        }
 
         // Settings Drawer open/close
         this.elements.menuTriggerBtn.addEventListener('click', (e) => {

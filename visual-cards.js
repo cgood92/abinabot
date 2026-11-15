@@ -46,7 +46,7 @@ const LYRIC_ILLUSTRATIONS = {
         `
     },
     'heaven-v1-3': {
-        text: "Then Heav'nly Father presented a beautiful plan,",
+        text: "Then Heav’nly Father presented a beautiful plan,",
         bg: '#ede9fe',
         border: '#8b5cf6',
         svg: `
@@ -136,7 +136,7 @@ const LYRIC_ILLUSTRATIONS = {
         `
     },
     'heaven-v2-4': {
-        text: 'Jesus said, "Father, send me, and the glory be thine."',
+        text: 'Jesus said, “Father, send me, and the glory be thine.”',
         bg: '#fef9c3',
         border: '#eab308',
         svg: `
@@ -159,7 +159,7 @@ const LYRIC_ILLUSTRATIONS = {
     // CHRISTMAS BELLS ARE RINGING (Page 54)
     // ====================================================
     'bells-1': {
-        text: 'Christmas bells are ringing,',
+        text: 'Christmas bells are ringing.',
         bg: '#fef3c7',
         border: '#f59e0b',
         svg: `
@@ -219,7 +219,7 @@ const LYRIC_ILLUSTRATIONS = {
         `
     },
     'bells-4': {
-        text: 'In Bethlehem.',
+        text: 'in Bethlehem.',
         bg: '#1e1b4b',
         border: '#818cf8',
         textColor: '#ffffff',
@@ -249,7 +249,7 @@ class VisualCardController {
         if (!this.container) return;
         this.container.classList.remove('visible');
         this.container.innerHTML = '';
-        document.body.classList.remove('has-visual-card');
+        document.body.classList.remove('has-visual-card', 'has-visual-grid');
     }
 
     // Show a single big illustrated card (for line-by-line teaching)
@@ -261,7 +261,8 @@ class VisualCardController {
             return;
         }
 
-        document.body.classList.add('has-visual-card');
+        document.body.classList.remove('has-visual-grid');
+        document.body.classList.add('has-visual-card', 'has-visual-grid');
         this.container.classList.add('visible');
 
         this.container.innerHTML = `
@@ -286,7 +287,7 @@ class VisualCardController {
             return;
         }
 
-        document.body.classList.add('has-visual-card');
+        document.body.classList.add('has-visual-card', 'has-visual-grid');
         this.container.classList.add('visible');
 
         const itemsHtml = cards.map((card, i) => `
