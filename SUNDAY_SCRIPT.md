@@ -64,7 +64,7 @@
 - **[Step 11] 🤖 ABINABOT (`point` + Picture Card 2)** — *`clip-06-v1-2.wav`*:
   > "Lived there and loved there with people I know. So did you."
 - **[Step 12] 🤖 ABINABOT (`point` + Picture Card 3)** — *`clip-07-v1-3.wav`*:
-  > "Then Heav'nly Father presented a beautiful plan,"
+  > "Then Heav’nly Father presented a beautiful plan,"
 - **[Step 13] 🤖 ABINABOT (`point` + Picture Card 4)** — *`clip-08-v1-4.wav`*:
   > "All about earth and eternal salvation for man."
   - *👉 Click **NEXT** to show all 4 Verse 1 pictures + words together!*
@@ -86,10 +86,10 @@
   > "Sure! Since you taught verse one, I'll teach verse two!"
   - *👉 Click **NEXT** through each Verse 2 card as you review it with the kids!*
 
-- **[Step 18] YOU (Card 1):** *"Father said he needed someone who had enough love,"*
+- **[Step 18] YOU (Card 1):** *"Father said he needed someone who had enough love"*
 - **[Step 19] YOU (Card 2):** *"To give his life so we all could return there above."*
 - **[Step 20] YOU (Card 3):** *"There was another who sought for the honor divine."*
-- **[Step 21] YOU (Card 4):** *"Jesus said, 'Father, send me, and the glory be thine.'"*
+- **[Step 21] YOU (Card 4):** *"Jesus said, “Father, send me, and the glory be thine.”"*
   - *👉 Click **NEXT** to show all 4 Verse 2 pictures + words!*
 
 - **[Step 22] YOU & KIDS SING VERSE 2** *(2x2 Verse 2 Visual Grid visible + Abinabot conducts)*:
@@ -122,13 +122,13 @@
   - *👉 Click **NEXT**! (Abinabot will automatically advance through the 4 quick lines + pictures as he speaks them, or you can use Left/Right arrows anytime!)*
 
 - **[Step 28] 🤖 ABINABOT (`point` + Picture 1)** — *`clip-12-bells-1.wav`*:
-  > "Christmas bells are ringing,"
+  > "Christmas bells are ringing."
 - **[Step 29] 🤖 ABINABOT (`point` + Picture 2)** — *`clip-13-bells-2.wav`*:
   > "Hear what they say to you:"
 - **[Step 30] 🤖 ABINABOT (`point` + Picture 3)** — *`clip-14-bells-3.wav`*:
   > "Jesus is born in Bethlehem,"
 - **[Step 31] 🤖 ABINABOT (`point` + Picture 4)** — *`clip-15-bells-4.wav`*:
-  > "In Bethlehem."
+  > "in Bethlehem."
   - *(Automatically lands on Step 32: All 4 pictures + words!)*
 
 - **[Step 32] YOU & KIDS SING CHRISTMAS BELLS** *(2x2 Grid visible + Abinabot sways)*:
